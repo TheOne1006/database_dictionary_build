@@ -13,7 +13,6 @@ angular
     'ngAnimate',
     'ngCookies',
     'ngResource',
-    'ngRoute',
     'ngSanitize',
     'ui.router',
     'databaseDictionaryBuildApp.controllers'
@@ -38,7 +37,16 @@ angular
             controller: 'AboutCtrl',
           }
         }
-      });
+      })
+      .state('table',{
+        url:'/table/:tbName',
+        views:{
+          '@':{
+            templateUrl: 'views/table.html'
+          }
+        }
+      })
+      ;
 
       // 不知道名连接跳转
         $urlRouterProvider.otherwise('/about');
