@@ -7,7 +7,7 @@
  * # MainCtrl
  * Controller of the databaseDictionaryBuildApp
  */
-angular.module('databaseDictionaryBuildApp')
+angular.module('databaseDictionaryBuildApp.controllers')
   .controller('MainCtrl', function () {
     this.awesomeThings = [
       'HTML5 Boilerplate',

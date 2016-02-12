@@ -131,7 +131,6 @@ gulp.task('serve:prod', function() {
 
 gulp.task('test', ['start:server:test'], function () {
   var testToFiles = paths.testRequire.concat(paths.scripts, paths.test);
-  console.log(testToFiles);
   return gulp.src(testToFiles)
     .pipe($.karma({
       configFile: paths.karma,
@@ -145,6 +144,11 @@ gulp.task('bower', function () {
     .pipe(wiredep({
       optional: 'configuration',
       goes: 'here',
+      exclude: [
+        'bower_components/videojs/dist/video-js/video-js.css',
+        'bower_components/videojs/dist/video-js/video.js',
+        'bower_components/angular-bootstrap/ui-bootstrap-tpls.js'
+      ],
       ignorePath: '\.\.'
     }))
     .pipe(gulp.dest(yeoman.app));

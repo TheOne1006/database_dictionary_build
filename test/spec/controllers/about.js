@@ -3,7 +3,7 @@
 describe('Controller: AboutCtrl', function () {
 
   // load the controller's module
-  beforeEach(module('databaseDictionaryBuildApp'));
+  beforeEach(module('databaseDictionaryBuildApp.controllers'));
 
   var AboutCtrl,
     scope;
