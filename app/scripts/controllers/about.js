@@ -11,7 +11,7 @@ angular.module('databaseDictionaryBuildApp')
   .controller('AboutCtrl', function () {
     this.awesomeThings = [
       'HTML5 Boilerplate',
-      'AngularJS',
+      'AngularJS1',
       'Karma'
     ];
   });

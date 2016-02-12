@@ -11,6 +11,11 @@
   "undef": true,
   "unused": true,
   "globals": {
-    "angular": false
+    "angular": false,
+    "describe": true,
+    "it" : true,
+    "expect" : true,
+    "beforeEach": true,
+    "inject": true
   }
 }
