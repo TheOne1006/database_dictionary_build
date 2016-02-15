@@ -46,6 +46,19 @@ angular
           }
         }
       })
+      .state('build',{
+        url: '/build',
+        abstract: true,
+      })
+      .state('build.connect',{
+        url: '/connect',
+        views: {
+          '@':{
+            templateUrl: 'views/build.connect.html',
+            controller: 'ConnectCtrl'
+          }
+        }
+      })
       ;
 
       // 不知道名连接跳转
