@@ -5,7 +5,7 @@
  * @name databaseDictionaryBuildApp.controller:AboutCtrl
  * @description
  * # AboutCtrl
- * Controller of the databaseDictionaryBuildApp.controllers
+ * Controller of the databaseDictionaryBuildApp
  */
 angular
   .module('databaseDictionaryBuildApp.controllers')

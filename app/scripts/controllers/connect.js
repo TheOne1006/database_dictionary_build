@@ -2,9 +2,9 @@
 
 /**
  * @ngdoc function
- * @name databaseDictionaryBuildApp.controller:MainCtrl
+ * @name databaseDictionaryBuildApp.controller:ConnectCtrl
  * @description
- * # MainCtrl
+ * # ConnectCtrl
  * Controller of the databaseDictionaryBuildApp
  */
 angular.module('databaseDictionaryBuildApp.controllers')
