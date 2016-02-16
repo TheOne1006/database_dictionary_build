@@ -1,5 +1,10 @@
-<div class="col-md-4" ng-repeat="item in [1,2,3,4]">
-  <h2>Heading</h2>
-  <p>demo demo demo</p>
-  <p><a class="btn btn-primary" ng-href="#/table/user" role="button">View details »</a></p>
+<div class="col-md-4" ng-repeat="item in list">
+  <h2>
+    <a ng-href="#/table/{{item.Name}}">
+      {{item.Name}}
+    </a>
+  </h2>
+  <p>Engine: {{item.Engine}}</p>
+  <p>Comment : {{item.Comment}}</p>
+  <p><a class="btn btn-primary" ng-href="#/table/{{item.Name}}" role="button"> 查看 </a></p>
 </div>

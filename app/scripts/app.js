@@ -29,13 +29,27 @@ angular
   .config(['$stateProvider', '$urlRouterProvider' , function($stateProvider, $urlRouterProvider) {
     $stateProvider
       .state('main',{
+        url: '',
+        abstract: true,
+        controller: 'MainCtrl'
+      })
+      .state('main.index', {
         url:'/',
         views:{
-          '@':{
-              templateUrl: 'views/main.html',
-              controller: 'MainCtrl',
-            }
+          '@' : {
+            templateUrl: 'views/main.html',
+            controller: 'TablesCtrl'
           }
+        }
+      })
+      .state('main.table',{
+        url:'/table/:tbName',
+        views:{
+          '@':{
+            templateUrl: 'views/table.html',
+            controller: 'TableCtrl'
+          }
+        }
       })
       .state('about',{
         url:'/about',
@@ -43,14 +57,6 @@ angular
           '@':{
             templateUrl: 'views/about.html',
             controller: 'AboutCtrl',
-          }
-        }
-      })
-      .state('table',{
-        url:'/table/:tbName',
-        views:{
-          '@':{
-            templateUrl: 'views/table.html'
           }
         }
       })

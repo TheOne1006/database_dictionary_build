@@ -1,0 +1,32 @@
+<h1>
+  {{table.tableName}}
+</h1>
+<div class="table-responsive">
+  <table class="table table-striped table-hover table-bordered">
+    <thead>
+        <tr>
+          <th>#</th>
+          <th>字段名</th>
+          <th>数据类型</th>
+          <th>默认值</th>
+          <th>允许为空</th>
+          <th>扩展</th>
+          <th>备注</th>
+        </tr>
+    </thead>
+
+    <tbody>
+      <tr ng-repeat='item in table.fields'>
+        <td>{{$index+1}}</td>
+        <td>{{item.Field}}</td>
+        <td>{{item.Type}}</td>
+        <td>{{item.Default}}</td>
+        <td>{{item.Null=='NO'?'Not Null':'允许为空'}}</td>
+        <td>{{item.Extra}}</td>
+        <td>{{item.Comment}}</td>
+      </tr>
+    </tbody>
+
+
+  </table>
+</div>

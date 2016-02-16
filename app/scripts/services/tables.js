@@ -21,6 +21,9 @@ angular
           return resource.query(null, function (data) {
             allTables = data;
           });
+      },
+      gets: function () {
+        return ['1','2'];
       }
     };
   }]);
