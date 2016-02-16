@@ -1,6 +1,13 @@
 'use strict';
 
 /**
+ * 模块依赖
+ */
+ angular.module('databaseDictionaryBuildApp.services', ['ngResource']);
+ angular.module('databaseDictionaryBuildApp.controllers', ['databaseDictionaryBuildApp.services']);
+
+
+/**
  * @ngdoc overview
  * @name databaseDictionaryBuildApp
  * @description
@@ -15,7 +22,8 @@ angular
     'ngResource',
     'ngSanitize',
     'ui.router',
-    'databaseDictionaryBuildApp.controllers'
+    'databaseDictionaryBuildApp.controllers',
+    'databaseDictionaryBuildApp.services',
   ])
   // <div ui-view=""></div>
   .config(['$stateProvider', '$urlRouterProvider' , function($stateProvider, $urlRouterProvider) {
@@ -80,8 +88,3 @@ angular
   //       redirectTo: '/'
   //     });
   // });
-
-  /**
-   * 模块依赖
-   */
-  angular.module('databaseDictionaryBuildApp.controllers', ['ngResource']);

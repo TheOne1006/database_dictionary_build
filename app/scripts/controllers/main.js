@@ -8,10 +8,10 @@
  * Controller of the databaseDictionaryBuildApp
  */
 angular.module('databaseDictionaryBuildApp.controllers')
-  .controller('MainCtrl', function () {
-    this.awesomeThings = [
+  .controller('MainCtrl',['$scope', function ($scope) {
+    $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
-      'Karma'
+      'Karma1'
     ];
-  });
+  }]);
