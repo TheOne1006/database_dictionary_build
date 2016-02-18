@@ -40,10 +40,14 @@ var descTemp = {
 
 //创建连接
 var connection = mysql.createConnection({
-  host     : '182.92.163.224',
+  // host     : '182.92.163.224',
+  // user     : 'root',
+  // password : '9aa0f5be39',
+  // database : DATABASE
+  host     : 'localhost',
   user     : 'root',
-  password : '9aa0f5be39',
-  database : DATABASE
+  password : 'root',
+  database : 'gxd-jx'
 });
 
 async.waterfall([

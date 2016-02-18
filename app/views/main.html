@@ -1,10 +1,9 @@
 <div class="col-md-4" ng-repeat="item in list">
-  <h2>
+  <h5>
     <a ng-href="#/table/{{item.Name}}">
       {{item.Name}}
     </a>
-  </h2>
+  </h5>
   <p>Engine: {{item.Engine}}</p>
   <p>Comment : {{item.Comment}}</p>
-  <p><a class="btn btn-primary" ng-href="#/table/{{item.Name}}" role="button"> 查看 </a></p>
 </div>
