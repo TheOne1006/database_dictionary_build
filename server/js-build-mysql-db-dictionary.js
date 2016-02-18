@@ -5,13 +5,12 @@ var async = require('async');
 var fs = require('fs');
 var mkdirp = require('mkdirp');
 var _ = require('underscore');
-
-var DATABASE = 'mianshi';
+var config = require('./config.json');
 
 var filePaths = [
-  'data/table_info',
-  'data/sql',
-  'data/md'
+  config.path.table,
+  config.path.sql,
+  config.path.md
 ];
 
 var tableTemp = {
@@ -36,18 +35,16 @@ var descTemp = {
   Comment: ''
 };
 
-
-
 //创建连接
 var connection = mysql.createConnection({
-  // host     : '182.92.163.224',
+  host     : config.db.host,
+  user     : config.db.user,
+  password : config.db.password,
+  database : config.db.database
+  // host     : 'localhost',
   // user     : 'root',
-  // password : '9aa0f5be39',
-  // database : DATABASE
-  host     : 'localhost',
-  user     : 'root',
-  password : 'root',
-  database : 'gxd-jx'
+  // password : 'root',
+  // database : 'gxd-jx'
 });
 
 async.waterfall([
@@ -70,16 +67,6 @@ async.waterfall([
 
   },
   function ( cb) {
-
-    // connection.query('SELECT 1 + 1 AS solution', function(err, rows) {
-    //   if (err) {
-    //     return cb(err);
-    //   } else {
-    //     console.log('The solution is: ', rows[0].solution);
-    //     cb();
-    //   }
-    // });
-
     connection.query("SHOW TABLE STATUS" , function(err, rows) {
       if (err) {
           return cb(err);
@@ -88,7 +75,6 @@ async.waterfall([
            mapRows; // 最终传递的 rows
 
           // console.log(rows);
-
           allKeyArr = _.allKeys(descTemp);
 
           // console.log(allKeyArr);
@@ -104,7 +90,7 @@ async.waterfall([
 
           // console.log(mapRows);
 
-          fs.writeFile('data/all_tables.json',
+          fs.writeFile(config.path.all_tables,
               JSON.stringify(mapRows, null, "\t"),
               function (err) {
                   cb(err, mapRows);
@@ -114,6 +100,27 @@ async.waterfall([
         }
     });
   },
+  // 获取create sql
+  function (rows, cb) {
+    async.mapSeries(rows,
+      function (item, callback) {
+        var tableName = item.Name;
+        connection.query("SHOW CREATE TABLE " + tableName, function (err, _rows) {
+          var create_sql =  _rows[0]['Create Table'].replace(/AUTO_INCREMENT=\d+\s/,"")+';';
+
+          // console.log(create_sql);
+
+          fs.writeFile(config.path.sql+tableName+'.sql', create_sql, function (err) {
+                  callback(err, tableName);
+            });
+
+        });
+      },
+      function(err) {
+        cb(err, rows);
+      });
+  },
+  // 数据转json
   function (rows, cb) {
 
     async.mapSeries(rows,
@@ -121,17 +128,17 @@ async.waterfall([
 
         var tableName = item.Name;
 
-        connection.query("SHOW FULL COLUMNS FROM " + tableName, function (err, rows) {
+        connection.query("SHOW FULL COLUMNS FROM " + tableName, function (err, _rows) {
           // console.log(tableName);
           // console.log('---');
-          // console.log(rows);
+          // console.log(_rows);
 
           var allKeyArr, // 需要的 key 转成数组形式
-           mapRows, // 最终传递的 rows
+           mapRows, // 最终传递的 _rows
            tableSaveData = {};
 
            allKeyArr = _.allKeys(fieldTemp);
-           mapRows = _.map(rows, function (item) {
+           mapRows = _.map(_rows, function (item) {
              var cpItem =  _.extend({}, item);
              var needData = _.pick.apply(_, [cpItem].concat(allKeyArr));
              return needData;
@@ -144,7 +151,7 @@ async.waterfall([
 
           //  console.log(tableSaveData);
 
-           fs.writeFile('data/table_info/'+tableName+'.json',
+           fs.writeFile(config.path.table+tableName+'.json',
                JSON.stringify(tableSaveData, null, "\t"),
                function (err) {
                 return   callback(err, tableSaveData);

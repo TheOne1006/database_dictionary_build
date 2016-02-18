@@ -1,0 +1,15 @@
+{
+  "db" : {
+    "host"     : "182.92.163.224",
+    "port"     : "3306",
+    "user"     : "root",
+    "password" : "9aa0f5be39",
+    "database" : "gxddb002"
+  },
+  "path" : {
+    "table" : "data/table_info/",
+    "sql"   : "data/sql/",
+    "md"    : "data/md/",
+    "all_tables" : "data/all_tables.json"
+  }
+}
