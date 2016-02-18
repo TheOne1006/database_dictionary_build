@@ -148,8 +148,10 @@ gulp.task('bower', function () {
       goes: 'here',
       exclude: [
         'bower_components/videojs/dist/video-js/video-js.css',
+        'bower_components/bootstrap/dist/js/bootstrap.js',
         'bower_components/videojs/dist/video-js/video.js',
-        'bower_components/angular-bootstrap/ui-bootstrap-tpls.js'
+        'bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
+        'bower_components/flat-ui/dist/js/flat-ui.js'
       ],
       ignorePath: '\.\.'
     }))

@@ -42,14 +42,17 @@
           <div class="collapse navbar-collapse" id="js-navbar-collapse">
 
             <form class="navbar-form navbar-left" role="search">
-              <div class="form-group">
-                  <div class="input-group">
-                    <input class="form-control" type="search" placeholder="Animate">
-                    <span class="input-group-btn">
-                      <button type="submit" class="btn"><span class="fui-search"></span></button>
-                    </span>
-                  </div>
+              <!-- <div class="form-group">
+                <div class="input-group">
+                  <input class="form-control" type="search" placeholder="Animate">
+                  <span class="input-group-btn">
+                    <button type="submit" class="btn"><span class="fui-search"></span></button>
+                  </span>
                 </div>
+              </div> -->
+              <fui-search-group>
+              </fui-search-group>
+
             </form>
 
             <ul class="nav navbar-nav">
@@ -78,18 +81,17 @@
     <!-- bower:js -->
     <script src="/bower_components/jquery/dist/jquery.js"></script>
     <script src="/bower_components/angular/angular.js"></script>
-    <script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="/bower_components/angular-animate/angular-animate.js"></script>
     <script src="/bower_components/angular-cookies/angular-cookies.js"></script>
     <script src="/bower_components/angular-resource/angular-resource.js"></script>
     <script src="/bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-    <script src="/bower_components/flat-ui/dist/js/flat-ui.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
+        <script src="scripts/directives/fui-search-group.js"></script>
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/about.js"></script>
         <script src="scripts/controllers/tables.js"></script>

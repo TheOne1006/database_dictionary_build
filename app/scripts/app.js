@@ -5,6 +5,7 @@
  */
  angular.module('databaseDictionaryBuildApp.services', ['ngResource']);
  angular.module('databaseDictionaryBuildApp.controllers', ['databaseDictionaryBuildApp.services']);
+ angular.module('ui.flat', []);
 
 
 /**
@@ -24,6 +25,7 @@ angular
     'ui.router',
     'databaseDictionaryBuildApp.controllers',
     'databaseDictionaryBuildApp.services',
+    'ui.flat'
   ])
   // <div ui-view=""></div>
   .config(['$stateProvider', '$urlRouterProvider' , function($stateProvider, $urlRouterProvider) {
@@ -76,7 +78,7 @@ angular
       ;
 
       // 不知道名连接跳转
-        $urlRouterProvider.otherwise('/about');
+        $urlRouterProvider.otherwise('/');
   }]);
   // .config(function ($routeProvider) {
   //   $routeProvider
