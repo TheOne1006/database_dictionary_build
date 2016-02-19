@@ -2,7 +2,7 @@
 
 describe('Service: TablesService', function () {
 
-  // load the controller's module
+  // load the services's module
   beforeEach(module('databaseDictionaryBuildApp.services'));
 
   var mockServer;

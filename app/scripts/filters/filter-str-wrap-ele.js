@@ -4,7 +4,7 @@
  * @ngdoc function
  * @name databaseDictionaryBuildApp.filter:str-wrap-ele
  * @description
- * # str-wrap-b
+ * # str-wrap-ele
  * filter of the databaseDictionaryBuildApp
  */
  angular
@@ -24,7 +24,10 @@
           for (; j < strArrLen; j++) {
 
             if(strArr[j] === keywordArr[i]) {
-              strArr[j] = '<'+ele+'>' + strArr[j] + '</'+ele+'>';
+              if(ele) {
+                strArr[j] = '<'+ele+'>' + strArr[j] + '</'+ele+'>';
+              }
+
               start = ++j;
               break;
             }
