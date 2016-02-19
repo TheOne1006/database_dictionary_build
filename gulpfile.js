@@ -133,6 +133,9 @@ gulp.task('serve:prod', function() {
 
 gulp.task('test', ['start:server:test'], function () {
   var testToFiles = paths.testRequire.concat(paths.scripts, paths.test);
+
+  // console.log(testToFiles);
+
   return gulp.src(testToFiles)
     .pipe($.karma({
       configFile: paths.karma,

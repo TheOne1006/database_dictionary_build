@@ -6,12 +6,11 @@ describe('filter: str-wrap-ele', function () {
 
   var filterFun;
 
-  beforeEach(inject(function(strWrapEle) {
-    filterFun = strWrapEle;
+  beforeEach(inject(function($filter) {
+    filterFun = $filter('strWrapEle');
   }));
 
   it('扩展标签',function() {
-    console.log(filterFun);
     expect(filterFun('abc','a', 'b')).toBe('<b>a</b>bc');
   });
 
