@@ -10,6 +10,7 @@
 
 body {
   padding: 0;
+
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
@@ -32,6 +33,10 @@ body {
     line-height: 40px;
     padding-bottom: 19px;
   }
+}
+
+.header .navbar {
+    padding-left: calc(100vw - 100%);
 }
 
 /* Custom page footer */

@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
   </head>
-  <body ng-app="databaseDictionaryBuildApp">
+  <body ng-app="databaseDictionaryBuildApp" ng-controller="MainCtrl">
     <!--[if lte IE 8]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -34,8 +34,6 @@
               <span class="icon-bar"></span>
             </button>
 
-
-
             <a class="navbar-brand" href="#/">db Dictionary</a>
           </div>
 
@@ -50,7 +48,7 @@
                   </span>
                 </div>
               </div> -->
-              <fui-search-group>
+              <fui-search-group model="keyWorld">
               </fui-search-group>
 
             </form>
@@ -66,7 +64,7 @@
       </div>
     </div>
 
-    <div class="container">
+    <div class="container content">
       <div ui-view=""></div>
     </div>
 
@@ -92,6 +90,7 @@
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
         <script src="scripts/directives/fui-search-group.js"></script>
+        <script src="scripts/filters/filter-table.js"></script>
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/about.js"></script>
         <script src="scripts/controllers/tables.js"></script>

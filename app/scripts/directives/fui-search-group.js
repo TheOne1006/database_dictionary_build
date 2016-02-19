@@ -6,6 +6,8 @@
  * @description
  * # FuiSearchGroup
  * directive of the ui.flat
+ * 使用方式
+ * <fui-search-group model="keyWorld">
  */
 angular
   .module('ui.flat')
@@ -15,12 +17,15 @@ angular
         replace: 'true',
         template: '<div class="form-group" >'+
                     '<div class="input-group" ng-class={"focus":focus}>'+
-                      '<input class="form-control" type="search" placeholder="Animate" ng-focus="handleFocus()" ng-blur="handleBlur()">'+
+                      '<input class="form-control" type="search" placeholder="Animate" ng-focus="handleFocus()" ng-blur="handleBlur()" ng-model="model">'+
                         '<span class="input-group-btn">'+
                           '<button type="submit" class="btn"><span class="fui-search"></span></button>'+
                         '</span>'+
                     '</div>'+
                   '</div>',
+        scope:{
+           model:'='
+        },
         link: function(scope, element, attrs) {
           scope.focus = false;
           scope.handleFocus = function () {

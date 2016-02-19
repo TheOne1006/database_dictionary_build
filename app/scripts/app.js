@@ -5,6 +5,7 @@
  */
  angular.module('databaseDictionaryBuildApp.services', ['ngResource']);
  angular.module('databaseDictionaryBuildApp.controllers', ['databaseDictionaryBuildApp.services']);
+ angular.module('databaseDictionaryBuildApp.filters', []);
  angular.module('ui.flat', []);
 
 
@@ -25,6 +26,7 @@ angular
     'ui.router',
     'databaseDictionaryBuildApp.controllers',
     'databaseDictionaryBuildApp.services',
+    'databaseDictionaryBuildApp.filters',
     'ui.flat'
   ])
   // <div ui-view=""></div>
@@ -33,7 +35,6 @@ angular
       .state('main',{
         url: '',
         abstract: true,
-        controller: 'MainCtrl'
       })
       .state('main.index', {
         url:'/',

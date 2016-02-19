@@ -14,4 +14,11 @@ angular.module('databaseDictionaryBuildApp.controllers')
       'AngularJS',
       'Karma1'
     ];
+    // 初始化
+    $scope.keyWorld = '';
+
+    $scope.$watch('keyWorld', function (nextVal, preVal) {
+      // 向下传播
+      $scope.$broadcast('changKeyWord', nextVal);
+    });
   }]);
