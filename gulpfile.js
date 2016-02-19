@@ -72,9 +72,9 @@ gulp.task('clean:tmp', function (cb) {
 });
 
 gulp.task('start:client', ['start:server', 'styles'], function () {
-  // openURL('http://localhost:9000/app', "Google Chrome");
+  openURL('http://localhost:9000/app', "Google Chrome");
   // my linux
-  openURL('http://localhost:9000/app');
+  // openURL('http://localhost:9000/app');
 });
 
 gulp.task('start:server', function() {

@@ -1,9 +1,8 @@
 <div class="col-md-4" ng-repeat="item in list">
   <h5>
-    <a ng-href="#/table/{{item.Name}}">
-      {{item.Name}}
+    <a ng-href="#/table/{{item.Name}}" ng-bind-html="item.wrapName?item.wrapName:item.Name;">
     </a>
   </h5>
   <p>Engine: {{item.Engine}}</p>
-  <p>Comment : {{item.Comment}}</p>
+  <p>Comment : <span ng-bind-html="item.wrapComment?item.wrapComment:item.Comment;"></span></p>
 </div>

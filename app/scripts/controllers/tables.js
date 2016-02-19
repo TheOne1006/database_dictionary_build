@@ -20,10 +20,14 @@ angular.module('databaseDictionaryBuildApp.controllers')
       });
 
     // 接受父级ctrl 传播信息
-    $scope.$on('changKeyWord', function (d ,data) {
-      keyWorld = data;
-       $filter('filterTable')($scope.list, keyWorld);
-
+    $scope.$on('changKeyWord', function (d ,keyWord) {
+      TablesService
+        .get()
+        .$promise
+        .then(function (data) {
+          var list = $filter('filterTable')(data, keyWord);
+          $scope.list = list;
+        });
     });
 
 

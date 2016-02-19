@@ -17,6 +17,10 @@ body {
   padding-right: 15px;
 }
 
+.content h5 a > b, .content p span > b {
+  color: #E74C3C;
+}
+
 /* Custom page header */
 .header {
   border-bottom: 1px solid #e5e5e5;

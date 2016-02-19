@@ -26,7 +26,7 @@ angular
       }else {
         // 缓存获取
         var allTableDefer = $q.defer();
-        allTableDefer.resolve(cates);
+        allTableDefer.resolve(allTables);
 
         return {
           $promise: allTableDefer.promise
@@ -34,7 +34,7 @@ angular
 
 
       }
-    }
+    };
 
     return {
       get: getAllTables,
