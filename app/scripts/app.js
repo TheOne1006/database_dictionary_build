@@ -64,16 +64,12 @@ angular
           }
         }
       })
-      .state('build',{
-        url: '/build',
-        abstract: true,
-      })
-      .state('build.connect',{
-        url: '/connect',
+      .state('help',{
+        url: '/help',
         views: {
           '@':{
-            templateUrl: 'views/build.connect.html',
-            controller: 'ConnectCtrl'
+            templateUrl: 'views/help.html',
+            controller: 'HelpCtrl'
           }
         }
       })

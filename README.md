@@ -16,9 +16,39 @@
 
 1. Angular.js 主要负责路由 和 过滤,以及页面的渲染
 2. Bootstrap 页面css
-3. md2html `.md` 文件转 html
-4. `.json` 所有数据存储,最后都以一个 `.json`文件的形式
+3. `.json` 所有数据存储,最后都以一个 `.json`文件的形式
 
+#### 文件结构
+
+```
+database_dictionary_build/
+├── dist/
+|   ├── css/
+│   |   ├── main.js
+|   |   └── main.min.js
+|   ├── js/
+|   |   ├── vendors/
+│   |   ├── flat-ui.js
+│   |   └── flat-ui.min.js
+|   ├── fonts/
+|   |   ├── lato/
+|   |   └── glyphicons/
+|   ├── img/
+|   └── index.html
+├── app/
+|   ├── images/
+|   ├── scripts/
+|   ├── styles/
+|   ├── views/
+|   ├── index.html
+|   └── robots.txt
+├── server/
+|   ├── config.json
+|   ├── js-build-mysql-db-dictionary.js
+|   └── php-build-mysql-db-dictionary.php
+└── test/
+
+```
 
 #### 初衷
 
@@ -30,15 +60,9 @@ Anyway 最终我的方案是 php/node == build ==> `.json` 文件,再有 ng 加�
 
 #### 原型
 
-从数据库中获取建表语句
-```
+从数据库中获取建表语句  
 
-```
-
-正则匹配 生成 json 文件
-```
-
-```
+生成 相应的json 文件  
 
 
 
@@ -51,3 +75,7 @@ Anyway 最终我的方案是 php/node == build ==> `.json` 文件,再有 ng 加�
 
 
 ### How to use ?
+
+1. 配置 `server/config.json` 数据库信息
+2. 执行 `node`/`php` 脚本  
+3. 访问 `相应目录`
