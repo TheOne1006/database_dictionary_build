@@ -21,4 +21,11 @@ angular.module('databaseDictionaryBuildApp.controllers')
       // 向下传播
       $scope.$broadcast('changKeyWord', nextVal);
     });
+
+    $scope.$on('$viewContentLoaded',function(){
+      if($scope.keyWorld) {
+        // 向下传播
+        $scope.$broadcast('changKeyWord', $scope.keyWorld);
+      }
+    });
   }]);

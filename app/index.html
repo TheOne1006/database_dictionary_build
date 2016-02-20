@@ -10,6 +10,8 @@
     <!-- bower:css -->
     <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="/bower_components/flat-ui/dist/css/flat-ui.css" />
+    <link rel="stylesheet" href="/bower_components/codemirror/lib/codemirror.css" />
+    <link rel="stylesheet" href="/bower_components/codemirror/theme/material.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
@@ -23,7 +25,7 @@
 
     <!-- Add your site or application content here -->
     <div class="header">
-      <div class="navbar navbar-default" role="navigation">
+      <div class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="container">
           <div class="navbar-header">
 
@@ -83,7 +85,11 @@
     <script src="/bower_components/angular-cookies/angular-cookies.js"></script>
     <script src="/bower_components/angular-resource/angular-resource.js"></script>
     <script src="/bower_components/angular-sanitize/angular-sanitize.js"></script>
-    <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script> 
+    <script src="/bower_components/codemirror/lib/codemirror.js"></script>
+    <script src="/bower_components/angular-ui-codemirror/ui-codemirror.js"></script>
+    <script src="/bower_components/codemirror/mode/sql/sql.js"></script>
+
     <!-- endbower -->
     <!-- endbuild -->
 

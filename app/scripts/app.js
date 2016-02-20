@@ -27,7 +27,8 @@ angular
     'databaseDictionaryBuildApp.controllers',
     'databaseDictionaryBuildApp.services',
     'databaseDictionaryBuildApp.filters',
-    'ui.flat'
+    'ui.flat',
+    'ui.codemirror'
   ])
   // <div ui-view=""></div>
   .config(['$stateProvider', '$urlRouterProvider' , function($stateProvider, $urlRouterProvider) {

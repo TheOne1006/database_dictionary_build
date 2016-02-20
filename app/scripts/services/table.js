@@ -12,7 +12,9 @@ angular
   .factory('TableService', ['$resource', function ($resource) {
     var tableRows = [],
     resArr = {},
-    tablesData = {}
+    resSqlArr = {},
+    tablesData = {},
+    tablesSqlData = {}
     ;
 
       var getRes = function ( tbName ) {
@@ -25,13 +27,30 @@ angular
         return resArr[tbName];
       };
 
+      var getSqlRes = function ( tbName ) {
+        if(!resSqlArr[tbName]) {
+          resSqlArr[tbName] = $resource( '/data/sql/'+tbName+'.sql',null,{
+            timeout: 20000
+          });
+        }
+
+        return resArr[tbName];
+      };
+
     return {
       get: function (tbName) {
-          return getRes(tbName).get(null, function (data) {
-            if(data) {
-              tablesData[tbName] = data;
-            }
-          });
+        return getRes(tbName).get(null, function (data) {
+          if(data) {
+            tablesData[tbName] = data;
+          }
+        });
+      },
+      getSql : function (tbName) {
+        return getSqlRes(tbName).get(null, function (data) {
+          if(data) {
+            tablesSqlData[tbName] = data;
+          }
+        });
       }
     };
   }]);

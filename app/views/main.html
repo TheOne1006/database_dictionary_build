@@ -1,8 +1,26 @@
-<div class="col-md-4" ng-repeat="item in list">
-  <h5>
-    <a ng-href="#/table/{{item.Name}}" ng-bind-html="item.wrapName?item.wrapName:item.Name;">
-    </a>
-  </h5>
-  <p>Engine: {{item.Engine}}</p>
-  <p>Comment : <span ng-bind-html="item.wrapComment?item.wrapComment:item.Comment;"></span></p>
+<div class="row">
+  <button
+    name="simple"
+    type="button"
+    class="pull-right btn"
+    ng-class={"btn-primary":!simpleModel,"btn-warning":simpleModel}
+    ng-click="simpleModel = !simpleModel" >
+    {{simpleModel?'Simple':'Card';}}
+  </button>
+</div>
+<div class="content-tables" ng-class="{'simple':simpleModel}">
+  <div  ng-class="{'col-md-3':simpleModel,'col-md-4':!simpleModel}" ng-repeat="item in list">
+    <h5 class="table-name">
+      <a ng-href="#/table/{{item.Name}}" ng-bind-html="item.wrapName?item.wrapName:item.Name;">
+      </a>
+    </h5>
+    <p class="table-engine">
+      Engine: {{item.Engine}}
+    </p>
+    <p class="table-comment">
+      Comment :
+      <span ng-bind-html="item.wrapComment?item.wrapComment:item.Comment;">
+      </span>
+    </p>
+  </div>
 </div>

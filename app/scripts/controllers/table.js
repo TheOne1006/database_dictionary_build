@@ -9,6 +9,8 @@
  */
 angular.module('databaseDictionaryBuildApp.controllers')
   .controller('TableCtrl',['$scope', '$stateParams', 'TableService', function ($scope, $stateParams, TableService) {
+    $scope.showSql = false;
+    
     $scope.table = [];
 
     TableService

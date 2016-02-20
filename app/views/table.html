@@ -26,7 +26,33 @@
         <td>{{item.Comment}}</td>
       </tr>
     </tbody>
-
-
   </table>
 </div>
+<h4>
+  建表语句
+  <button type="button" class="btn" ng-class={"btn-primary":showSql,"btn-warning":!showSql}  ng-click="showSql = !showSql">{{showSql?'显示':'隐藏';}}</button>
+</h4>
+<section ng-show='showSql'>
+  <ui-codemirror ui-codemirror-opts="{
+      theme:'material',
+      lineNumbers: true,
+      mode: 'sql'
+    }" >
+CREATE TABLE `dw_account_bank` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `account_number` varchar(100) NOT NULL,
+  `bank` varchar(50) NOT NULL,
+  `branch` varchar(100) DEFAULT NULL,
+  `province` int(5) DEFAULT '0',
+  `city` int(5) DEFAULT '0',
+  `area` int(5) DEFAULT '0',
+  `addtime` int(11) DEFAULT NULL,
+  `addip` varchar(50) DEFAULT NULL,
+  `update_time` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `user_id` (`user_id`),
+  KEY `account_number` (`account_number`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='utf8_general_ci';
+</ui-codemirror>
+</section>

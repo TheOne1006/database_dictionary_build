@@ -12,6 +12,8 @@ angular.module('databaseDictionaryBuildApp.controllers')
     var keyWorld = '';
     $scope.list = [];
 
+    $scope.simpleModel = false;
+
     TablesService
       .get()
       .$promise

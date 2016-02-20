@@ -10,7 +10,7 @@
 
 body {
   padding: 0;
-
+  padding-top: 70px;
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
@@ -24,12 +24,20 @@ body {
 .content h5 a > b, .content p span > b {
   color: #E74C3C;
 }
+.content .simple {
+  .table-engine {
+    display: none;
+  }
+  .table-comment {
+    display: none;
+  }
+  .table-name {
+    font-size: 18px;
+  }
+}
 
 /* Custom page header */
 .header {
-  border-bottom: 1px solid #e5e5e5;
-  margin-bottom: 10px;
-
   /* Make the masthead heading the same height as the navigation */
   h3 {
     margin-top: 0;
@@ -91,4 +99,9 @@ body {
   .jumbotron {
     border-bottom: 0;
   }
+}
+
+// CodeMirror default
+.CodeMirror {
+  height: 600px;
 }
