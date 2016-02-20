@@ -23,21 +23,26 @@
 ```
 database_dictionary_build/
 ├── dist/
-|   ├── css/
-│   |   ├── main.js
-|   |   └── main.min.js
-|   ├── js/
-|   |   ├── vendors/
-│   |   ├── flat-ui.js
-│   |   └── flat-ui.min.js
+|   ├── images/
+|   ├── scripts/
+|   ├── server/
+|   ├── styles/
+|   ├── views/
 |   ├── fonts/
 |   |   ├── lato/
 |   |   └── glyphicons/
-|   ├── img/
+|   ├── database_dictionary_build.zip
+|   ├── README.MD
 |   └── index.html
 ├── app/
 |   ├── images/
 |   ├── scripts/
+|   |   ├── controllers/
+|   |   ├── directives/
+|   |   ├── filters/
+|   |   ├── services/
+|   |   ├── router.js
+|   |   └── app.js
 |   ├── styles/
 |   ├── views/
 |   ├── index.html
@@ -47,7 +52,12 @@ database_dictionary_build/
 |   ├── js-build-mysql-db-dictionary.js
 |   └── php-build-mysql-db-dictionary.php
 └── test/
-
+    ├── spec/
+    |   ├─ controllers/
+    |   ├─ filters/
+    |   └─ services/
+    ├── .jshintrc
+    └── karma.conf.js
 ```
 
 #### 初衷
