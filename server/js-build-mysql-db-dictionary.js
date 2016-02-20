@@ -15,7 +15,8 @@ var filePaths = [
 
 var tableTemp = {
   tableName:'',
-  fields: []
+  fields: [],
+  keys: []
 };
 
 var fieldTemp = {
@@ -27,6 +28,15 @@ var fieldTemp = {
   Default: null,
   Extra: '',
   Comment: ''
+};
+
+var keyTemp = {
+  Non_unique    : '',
+  Key_name      : '',
+  Column_name   : '',
+  Type          : '',
+  Comment       : '',
+  Index_comment : ''
 };
 
 var descTemp = {
@@ -129,33 +139,66 @@ async.waterfall([
         var tableName = item.Name;
 
         connection.query("SHOW FULL COLUMNS FROM " + tableName, function (err, _rows) {
-          // console.log(tableName);
-          // console.log('---');
-          // console.log(_rows);
 
-          var allKeyArr, // 需要的 key 转成数组形式
-           mapRows, // 最终传递的 _rows
-           tableSaveData = {};
+          connection.query("SHOW KEYS FROM " + tableName, function (indexErr, _keyRows) {
+            // console.log(tableName);
+            // console.log('---');
+            // console.log(_rows);
 
-           allKeyArr = _.allKeys(fieldTemp);
-           mapRows = _.map(_rows, function (item) {
-             var cpItem =  _.extend({}, item);
-             var needData = _.pick.apply(_, [cpItem].concat(allKeyArr));
-             return needData;
-           });
+            // console.log(_keyRows);
 
-           _.extend(tableSaveData, tableTemp);
+            var allKeyArr, // 需要的 key 转成数组形式
+             mapRows, // 最终传递的 _rows
+             tableSaveData = {},
+             indexKeyArr,
+             mapIndexRows;
 
-           tableSaveData.tableName = tableName;
-           tableSaveData.fields = mapRows;
-
-          //  console.log(tableSaveData);
-
-           fs.writeFile(config.path.table+tableName+'.json',
-               JSON.stringify(tableSaveData, null, "\t"),
-               function (err) {
-                return   callback(err, tableSaveData);
+             /**
+             * fields
+             */
+             allKeyArr = _.allKeys(fieldTemp);
+             mapRows = _.map(_rows, function (item) {
+               var cpItem =  _.extend({}, item);
+               var needData = _.pick.apply(_, [cpItem].concat(allKeyArr));
+               return needData;
              });
+             _.extend(tableSaveData, tableTemp);
+
+             /**
+              * keys
+              */
+             indexKeyArr = _.allKeys(keyTemp);
+             mapIndexRows = _.map(_keyRows, function (item) {
+               var cpItem =  _.extend({}, item);
+               var needData = _.pick.apply(_, [cpItem].concat(indexKeyArr));
+
+                if(needData.Key_name === 'PRIMARY') {
+                  needData.Type = 'PRIMARY';
+                }else if(needData.Non_unique === 0) {
+                  needData.Type = 'UNIQUE';
+                }else {
+                  needData.Type = 'INDEX';
+                }
+
+               return needData;
+             });
+
+             tableSaveData.tableName = tableName;
+             tableSaveData.fields = mapRows;
+             tableSaveData.keys = mapIndexRows;
+
+            //  console.log(tableSaveData);
+
+             fs.writeFile(config.path.table+tableName+'.json',
+                 JSON.stringify(tableSaveData, null, "\t"),
+                 function (err) {
+                  return   callback(err, tableSaveData);
+               });
+
+          });
+
+
+
         });
     }, function(err, tableNames) {
       cb(err, tableNames);

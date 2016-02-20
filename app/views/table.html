@@ -4,7 +4,7 @@
 <div class="table-responsive">
   <table class="table table-striped table-hover table-bordered">
     <thead>
-        <tr>
+        <tr class="palette-concrete">
           <th>#</th>
           <th>字段名</th>
           <th>数据类型</th>
@@ -27,6 +27,27 @@
       </tr>
     </tbody>
   </table>
+
+  <table class="table table-striped table-hover table-bordered">
+    <thead>
+        <tr class="palette-concrete">
+          <th>#</th>
+          <th>键名</th>
+          <th>索引类型</th>
+          <th>字段</th>
+        </tr>
+    </thead>
+
+    <tbody>
+      <tr ng-repeat='item in table.keys'>
+        <td>{{$index+1}}</td>
+        <td>{{item.Key_name}}</td>
+        <td>{{item.Type}}</td>
+        <td>{{item.Column_name}}</td>
+      </tr>
+    </tbody>
+  </table>
+
 </div>
 <h4>
   建表语句

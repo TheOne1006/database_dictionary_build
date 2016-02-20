@@ -1,6 +1,8 @@
 {
   "name": "databasedictionarybuild",
   "private": true,
+  "version": "0.0.2",
+  "description": "创建 web 版本数据字典",
   "devDependencies": {
     "gulp": "^3.9.0",
     "gulp-autoprefixer": "2.3.1",
@@ -23,6 +25,7 @@
     "gulp-useref": "^3.0.0",
     "gulp-util": "^3.0.6",
     "gulp-watch": "^4.2.4",
+    "gulp-zip": "^3.2.0",
     "jasmine-core": "^2.4.1",
     "jshint-stylish": "^1.0.0",
     "karma-chrome-launcher": "^0.2.2",

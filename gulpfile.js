@@ -234,15 +234,25 @@ gulp.task('server:build', function () {
 });
 
 gulp.task('build', ['clean:dist'], function () {
-  runSequence(['images', 'copy:extras', 'copy:fonts', 'client:build', 'server:build'], function () {
-    gulp.src(yeoman.dist+'/*.html')
-      .pipe($.rename({
-        basename:"index",
-        extname: ".html"
-      }))
-      .pipe(gulp.dest(yeoman.dist));
-  });
+  runSequence(['images', 'copy:extras', 'copy:fonts', 'client:build', 'server:build'], 'renameIndex', 'zip');
 
 });
+
+gulp.task('renameIndex', function () {
+  gulp.src(yeoman.dist+'/*.html')
+    .pipe($.rename({
+      basename:"index",
+      extname: ".html"
+    }))
+    .pipe(gulp.dest(yeoman.dist));
+});
+
+gulp.task('zip', function () {
+  return gulp.src(yeoman.dist+'/**/*.*')
+		.pipe($.zip('db_dictionary_build.zip'))
+		.pipe(gulp.dest(yeoman.dist));
+});
+
+
 
 gulp.task('default', ['build']);
