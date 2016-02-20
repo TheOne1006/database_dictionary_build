@@ -56,12 +56,23 @@
             </form>
 
             <ul class="nav navbar-nav">
-              <li><a href="#/">Home</a></li>
-              <li><a ng-href="#/about">about</a></li>
-              <li><a ng-href="#/build/connect"> To Build </a></li>
+              <li><a ng-href="#/">Home</a></li>
+              <li><a ng-href="#/about">About</a></li>
               <li><a ng-href="#/help">Help</a></li>
             </ul>
-          </div>
+
+            <form class="navbar-form navbar-right">
+              <button
+                name="simple"
+                type="button"
+                class="btn"
+                ng-class={"btn-success":!simpleModel,"btn-warning":simpleModel}
+                ng-click="simpleModel = !simpleModel" >
+                {{simpleModel?'SimpleModel':'CardModel';}}
+              </button>
+          </form>
+      </div>
+
         </div>
       </div>
     </div>
@@ -85,7 +96,7 @@
     <script src="/bower_components/angular-cookies/angular-cookies.js"></script>
     <script src="/bower_components/angular-resource/angular-resource.js"></script>
     <script src="/bower_components/angular-sanitize/angular-sanitize.js"></script>
-    <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script> 
+    <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="/bower_components/codemirror/lib/codemirror.js"></script>
     <script src="/bower_components/angular-ui-codemirror/ui-codemirror.js"></script>
     <script src="/bower_components/codemirror/mode/sql/sql.js"></script>

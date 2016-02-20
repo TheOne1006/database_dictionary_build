@@ -9,7 +9,7 @@
  */
 angular
   .module('databaseDictionaryBuildApp.services')
-  .factory('TableService', ['$resource', function ($resource) {
+  .factory('TableService', ['$resource', '$http', '$q', function ($resource, $http, $q) {
     var tableRows = [],
     resArr = {},
     resSqlArr = {},
@@ -27,30 +27,30 @@ angular
         return resArr[tbName];
       };
 
-      var getSqlRes = function ( tbName ) {
-        if(!resSqlArr[tbName]) {
-          resSqlArr[tbName] = $resource( '/data/sql/'+tbName+'.sql',null,{
-            timeout: 20000
+      var getSqlRes = function (tbName, defer) {
+        $http
+          .get('/data/sql/'+tbName+'.sql')
+          .success(function (data) {
+            defer.resolve(data);
           });
-        }
-
-        return resArr[tbName];
       };
 
     return {
       get: function (tbName) {
-        return getRes(tbName).get(null, function (data) {
-          if(data) {
-            tablesData[tbName] = data;
-          }
-        });
+        return getRes(tbName)
+                .get(null, function (data) {
+                  if(data) {
+                    tablesData[tbName] = data;
+                  }
+                });
       },
       getSql : function (tbName) {
-        return getSqlRes(tbName).get(null, function (data) {
-          if(data) {
-            tablesSqlData[tbName] = data;
-          }
-        });
+        var resDefer = $q.defer();
+          getSqlRes(tbName, resDefer);
+
+        return {
+          $promise: resDefer.promise
+        };
       }
     };
   }]);

@@ -17,7 +17,7 @@ angular
         replace: 'true',
         template: '<div class="form-group" >'+
                     '<div class="input-group" ng-class={"focus":focus}>'+
-                      '<input class="form-control" type="search" placeholder="Animate" ng-focus="handleFocus()" ng-blur="handleBlur()" ng-model="model">'+
+                      '<input class="form-control" type="search" placeholder="表名" ng-focus="handleFocus()" ng-blur="handleBlur()" ng-model="model">'+
                         '<span class="input-group-btn">'+
                           '<button type="submit" class="btn"><span class="fui-search"></span></button>'+
                         '</span>'+

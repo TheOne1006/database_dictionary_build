@@ -14,6 +14,8 @@ angular.module('databaseDictionaryBuildApp.controllers')
 
     $scope.simpleModel = false;
 
+
+
     TablesService
       .get()
       .$promise
@@ -22,7 +24,7 @@ angular.module('databaseDictionaryBuildApp.controllers')
       });
 
     // 接受父级ctrl 传播信息
-    $scope.$on('changKeyWord', function (d ,keyWord) {
+    $scope.$on('changKeyWord', function (d, keyWord) {
       TablesService
         .get()
         .$promise
@@ -30,6 +32,10 @@ angular.module('databaseDictionaryBuildApp.controllers')
           var list = $filter('filterTable')(data, keyWord);
           $scope.list = list;
         });
+    });
+
+    $scope.$on('modelChange', function (d, simpleModel) {
+      $scope.simpleModel = simpleModel;
     });
 
 

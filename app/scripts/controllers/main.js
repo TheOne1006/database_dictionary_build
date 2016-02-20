@@ -16,10 +16,16 @@ angular.module('databaseDictionaryBuildApp.controllers')
     ];
     // 初始化
     $scope.keyWorld = '';
+    $scope.simpleModel = false;
 
-    $scope.$watch('keyWorld', function (nextVal, preVal) {
+    $scope.$watch('keyWorld', function (nextVal) {
       // 向下传播
       $scope.$broadcast('changKeyWord', nextVal);
+    });
+
+    $scope.$watch('simpleModel', function (nextVal) {
+      // 向下传播
+      $scope.$broadcast('modelChange', nextVal);
     });
 
     $scope.$on('$viewContentLoaded',function(){
@@ -27,5 +33,7 @@ angular.module('databaseDictionaryBuildApp.controllers')
         // 向下传播
         $scope.$broadcast('changKeyWord', $scope.keyWorld);
       }
+
+      $scope.$broadcast('modelChange', $scope.simpleModel);
     });
   }]);
