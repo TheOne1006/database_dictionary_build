@@ -89,3 +89,4 @@ Anyway 最终我的方案是 php/node == build ==> `.json` 文件,再有 ng 加�
 1. 配置 `server/config.json` 数据库信息
 2. 执行 `node`/`php` 脚本  
 3. 访问 `相应目录`
+4. 支持模糊搜索
