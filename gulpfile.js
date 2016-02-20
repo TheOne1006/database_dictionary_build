@@ -234,7 +234,14 @@ gulp.task('server:build', function () {
 });
 
 gulp.task('build', ['clean:dist'], function () {
-  runSequence(['images', 'copy:extras', 'copy:fonts', 'client:build', 'server:build']);
+  runSequence(['images', 'copy:extras', 'copy:fonts', 'client:build', 'server:build'], function () {
+    gulp.src(yeoman.dist+'/*.html')
+      .pipe($.rename({
+        basename:"index",
+        extname: ".html"
+      }))
+      .pipe(gulp.dest(yeoman.dist));
+  });
 
 });
 
