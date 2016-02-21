@@ -1,5 +1,10 @@
 # database dictionary build 快速创建数据库字典
 
+### Demo
+
+[Demo](http://db.theone.io)
+
+
 ### What Can I do ?
 
 1. 我们只需要一款浏览器 (没错!我说的是 __浏览器__ 不是ie! ^.^ )
