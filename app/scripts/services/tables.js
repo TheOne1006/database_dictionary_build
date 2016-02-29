@@ -12,7 +12,7 @@ angular
   .factory('TablesService', ['$resource' , '$q', function ($resource, $q) {
     var allTables = [],
       keyWord = '',
-      resource = $resource('/data/all_tables.json',null,{
+      resource = $resource('data/all_tables.json',null,{
         timeout: 20000
       });
 

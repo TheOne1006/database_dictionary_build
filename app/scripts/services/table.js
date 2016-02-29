@@ -19,7 +19,7 @@ angular
 
       var getRes = function ( tbName ) {
         if(!resArr[tbName]) {
-          resArr[tbName] = $resource( '/data/table_info/'+tbName+'.json',null,{
+          resArr[tbName] = $resource( 'data/table_info/'+tbName+'.json',null,{
             timeout: 20000
           });
         }
@@ -29,7 +29,7 @@ angular
 
       var getSqlRes = function (tbName, defer) {
         $http
-          .get('/data/sql/'+tbName+'.sql')
+          .get('data/sql/'+tbName+'.sql')
           .success(function (data) {
             defer.resolve(data);
           });
